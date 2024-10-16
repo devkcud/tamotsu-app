@@ -1,12 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
+
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, Text, View } from 'react-native';
+import Scanner from './pages/Camera';
+import { NavigationContainer } from '@react-navigation/native';
+import Local from './pages/Local';
+
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Camera" component={Scanner} options={{ headerShown: false }} />
+        <Tab.Screen name="Local" component={Local} options={{ headerShown: false }} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
